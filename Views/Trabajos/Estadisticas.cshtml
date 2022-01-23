@@ -1,0 +1,37 @@
+﻿@{
+    ViewData["Title"] = "Estadisticas";
+}
+
+<h1>Estadisticas</h1>
+<h4>Cantidad de trabajos por: @ViewData["FiltroActual"]</h4>
+
+<form asp-action="Estadisticas" asp-controller="Trabajos" method="get">
+    <div class="form-actions no-color">
+        <p>
+            <label class="cotrol-label">
+                Estadisticas por
+                <select class="form-control" data-val="true" data-val-required="The Carrera field is required." id="Autor_CarreId" name="filtro">
+                    <option value="Año">A&ntilde;o</option>
+                    <option value="Carrera">Carrera</option>
+                    <option value="Facultad">Facultad</option>
+                    <option value="Tipo">Tipo</option>
+                </select>
+            </label>
+            <input type="submit" value="Aplicar" class="btn btn-outline-primary" />
+        </p>
+    </div>
+</form>
+
+@if (ViewBag.Estadisticas != null)
+{
+    <ul>
+        @foreach (var item in ViewBag.Estadisticas as Dictionary<string, int>)
+        {
+            <li>@item.Key<span>: </span>@item.Value </li>
+        }
+    </ul>
+}
+
+
+
+

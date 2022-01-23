@@ -1,0 +1,45 @@
+﻿@model CatalogoDeTrabajosDeGraduacion.Models.TrabajosModeloPersonalizado
+
+@{
+    ViewData["Title"] = "Eliminar";
+}
+
+<h1>Eliminar</h1>
+
+<h3>Esta seguro de querer borrar el trabajo?</h3>
+<div>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Trabajo.TrabaTitulo)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Trabajo.TrabaTitulo)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Trabajo.TrabaFecha)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Trabajo.TrabaFecha)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Trabajo.TpTrabaId)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Trabajo.TpTraba.TpTrabaNombre)
+        </dd class>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Autor.AutorNombre)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Autor.AutorApellido)<span>, </span>@Html.DisplayFor(mode => Model.Autor.AutorNombre)
+        </dd class>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Trabajo.TrabaId" />
+        <input type="hidden" asp-for="Autor.AutorId"/>
+        <input type="submit" value="Eliminar" class="btn btn-outline-danger" />
+        <a asp-action="Administrar">Volver a la lista</a>
+    </form>
+</div>

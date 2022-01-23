@@ -1,0 +1,37 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UserSecretsId>38eed950-48ce-4b99-8646-b8fe43450a4d</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Migrations\20201119235050_Tablas-Autenticacion.cs" />
+    <Compile Remove="Migrations\20201119235050_Tablas-Autenticacion.Designer.cs" />
+    <Compile Remove="Migrations\20201119235551_Tablas-Autenticacion.cs" />
+    <Compile Remove="Migrations\20201119235551_Tablas-Autenticacion.Designer.cs" />
+    <Compile Remove="Migrations\20201120000721_Tablas-Autenticacion.cs" />
+    <Compile Remove="Migrations\20201120000721_Tablas-Autenticacion.Designer.cs" />
+    <Compile Remove="Migrations\20201120001229_Tablas-Autenticacion.cs" />
+    <Compile Remove="Migrations\20201120001229_Tablas-Autenticacion.Designer.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="3.1.10" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="3.1.10" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="3.1.9" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.10" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.10">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.4" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Areas\" />
+    <Folder Include="Migrations\" />
+    <Folder Include="wwwroot\files\" />
+  </ItemGroup>
+
+</Project>

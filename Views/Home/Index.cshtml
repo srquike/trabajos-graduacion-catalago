@@ -1,0 +1,20 @@
+﻿@{
+    ViewData["Title"] = "Inicio";
+}
+
+@if (TempData["alerta"] != null && TempData["alerta"].ToString() == "hecho")
+{
+    <div class="alert alert-success alert-dismissible fade show" role="alert">
+        <strong>¡Felicidades!</strong>
+        <p>Tu trabajo de graduaci&oacute;n fue enviado con &eacute;xito.</p>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+}
+
+<div class="text-center">
+    <h1 class="display-2">Aplicaci&oacute;n Web para Trabajos de graduaci&oacute;n</h1>
+    <h4 class="display-4">Desarrollada por: Jonathan Enrique Vanegas Coreas</h4>
+    <p>Para la materia de Desarrollo de Aplicaciones Web 2020</p>
+</div>

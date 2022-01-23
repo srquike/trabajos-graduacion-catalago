@@ -1,0 +1,72 @@
+﻿@model IEnumerable<CatalogoDeTrabajosDeGraduacion.Models.Trabajo>
+
+@{
+    ViewData["Title"] = "Trabajos";
+    string facultad = string.Empty;
+}
+
+<h1>Trabajos de graduaci&oacute;n</h1>
+<form asp-action="Index" asp-controller="Trabajos" method="get">
+    <div class="form-actions no-color">
+        <p>
+            Buscar <input type="text" name="busqueda" value="@ViewData["BusquedaActual"]" />
+            <input type="submit" value="Buscar" class="btn btn-outline-primary" />
+        </p>
+    </div>
+</form>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.TrabaId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TrabaTitulo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TrabaFecha)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TpTraba)
+            </th>
+            <th>
+                <span>Autores</span>
+            </th>
+            <th>
+                <span>Facultad</span>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TrabaId)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TrabaTitulo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TrabaFecha)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TpTraba.TpTrabaNombre)
+                </td>
+                <td>
+                    @foreach (var autor in item.Autores)
+                    {
+                        facultad = autor.Carre.Facul.FaculNombre;
+                        @autor.AutorApellido<span>, </span>@autor.AutorNombre<span>.</span>
+                    }
+                </td>
+                <td>
+                    <span>@facultad</span>
+                </td>
+                <td>
+                    <a asp-action="Descargar" asp-route-id="@item.TrabaFile" class="btn btn-outline-dark">Descargar</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

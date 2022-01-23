@@ -1,0 +1,66 @@
+﻿@model CatalogoDeTrabajosDeGraduacion.Models.TrabajosModeloPersonalizado
+
+@{
+    ViewData["Title"] = "Subir";
+}
+
+@if (ViewData["ErrorMessage"] != null)
+{
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <strong>¡Ha ocurrido un error!</strong>
+        @if (ViewData["ErrorMessage"].ToString() == "FileError")
+        {
+            <p>@ViewBag.Message</p>
+        }
+        @if (ViewData["ErrorMessage"].ToString() == "ExceptionError")
+        {
+            <p>@ViewBag.Message</p>
+        }
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+}
+
+<h1>Subir trabajo de graduaci&oacute;n</h1>
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Subir" asp-controller="Trabajos" method="post" enctype="multipart/form-data">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <h4>Datos del trabajo</h4>
+            <div class="form-group">
+                <label asp-for="Trabajo.TrabaTitulo" class="control-label"></label>
+                <input asp-for="Trabajo.TrabaTitulo" class="form-control" />
+                <span asp-validation-for="Trabajo.TrabaTitulo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Trabajo.TpTrabaId" class="control-label"></label>
+                <select asp-for="Trabajo.TpTrabaId" class="form-control" asp-items="ViewBag.TpTrabaId"></select>
+            </div>
+            <div class="form-group">
+                <label class="control-label">Subir Archivo</label>
+                <input type="file" name="file" accept=".pdf" class="form-control-file" />
+            </div>
+            <h4>Datos del Autor</h4>
+            <div class="form-group">
+                <label asp-for="Autor.AutorNombre" class="control-label"></label>
+                <input asp-for="Autor.AutorNombre" class="form-control" />
+                <span asp-validation-for="Autor.AutorNombre" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Autor.AutorApellido" class="control-label"></label>
+                <input asp-for="Autor.AutorApellido" class="form-control" />
+                <span asp-validation-for="Autor.AutorApellido" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Autor.CarreId" class="control-label"></label>
+                <select asp-for="Autor.CarreId" class="form-control" asp-items="ViewBag.CarreId"></select>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Subir" class="btn btn-outline-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+

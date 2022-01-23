@@ -1,0 +1,56 @@
+﻿@model CatalogoDeTrabajosDeGraduacion.Models.TrabajosModeloPersonalizado
+
+@{
+    ViewData["Title"] = "Editar";
+}
+
+<h1>Editar trabajo de graduaci&oacute;n</h1>
+
+<h4>@Model.Trabajo.TrabaTitulo</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <h4>Datos del trabajo</h4>
+            <input type="hidden" asp-for="Trabajo.TrabaId" />
+            <input type="hidden" asp-for="Trabajo.TrabaFile" />
+            <input type="hidden" asp-for="Trabajo.TrabaFecha" />
+            <div class="form-group">
+                <label asp-for="Trabajo.TrabaTitulo" class="control-label"></label>
+                <input asp-for="Trabajo.TrabaTitulo" class="form-control" />
+                <span asp-validation-for="Trabajo.TrabaTitulo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Trabajo.TpTrabaId" class="control-label"></label>
+                <select asp-for="Trabajo.TpTrabaId" class="form-control" asp-items="ViewBag.TpTrabaId"></select>
+                <span asp-validation-for="Trabajo.TpTrabaId" class="text-danger"></span>
+            </div>
+            <h4>Datos del autor</h4>
+            <input type="hidden" asp-for="Autor.AutorId" />
+            <input type="hidden" asp-for="Autor.CarreId" />
+            <input type="hidden" asp-for="Autor.TrabaId" />
+            <div class="form-group">
+                <label asp-for="Autor.AutorNombre" class="control-label"></label>
+                <input asp-for="Autor.AutorNombre" class="form-control" />
+                <span asp-validation-for="Autor.AutorNombre" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Autor.AutorApellido" class="control-label"></label>
+                <input asp-for="Autor.AutorApellido" class="form-control" />
+                <span asp-validation-for="Autor.AutorApellido" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Guardar cambios" class="btn btn-outline-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Administrar" asp-controller="Trabajos">Volver a la lista</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
